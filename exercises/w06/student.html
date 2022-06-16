@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Learning Management System</title>
+    <style>
+      div {
+        margin: 10px 0;
+      }
+
+      input[type="button"] {
+        display: block;
+        margin: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <div><label for="id">Student ID</label></div>
+      <div><input id="id"></div>
+    </div>
+    <div>
+      <div><label for="name">Student name</label></div>
+      <div><input id="name"></div>
+    </div>
+    <div>
+      <input id="add_btn" type="button" value="Add A Student">
+      <input id="view_btn" type="button" value="View Students">
+      <input id="delete_btn" type="button" value="Delete By Student ID">
+    </div>
+    <div id="student_list">
+    </div>
+    <script src="student.js"></script>
+  </body>
+</html>
