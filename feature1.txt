@@ -1,4 +1,0 @@
-This is feature 1 code
-
-Further implementation
-
