@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Semantic Layout</title>
+  </head>
+
+  <body>
+    <header>
+      <!--
+        it's semantically valid to have more than one nav on a single page
+      -->
+      <nav>
+        <ul>
+          <li><a href="#">link</a></li>
+          <li><a href="#">link</a></li>
+          <li><a href="#">link</a></li>
+        </ul>
+      </nav>
+      <h1>
+        Page Title
+      </h1>
+    </header>
+
+    <main>
+      <!--
+        there should be no more than one <main>, <header>, <footer>
+      -->
+      <article>
+        <!--
+          an article should contain at least one heading text
+        -->
+        <h2>Title of the article</h2>
+        <section class="article-header">
+          <!--
+            a section should contain at least one heading text
+          -->
+          <h3>
+            Contact Form Header
+          </h3>
+        </section>
+        <section class="article-body">
+          <h3>Contact Form Details</h3>
+          <!--
+            method must be "post" because we have a long message field and a file upload field
+            enctype must be set as "multipart/form-data" because we have a file upload field
+          -->
+          <!--
+            onsubmit="return false;" is used to test HTML validation capability only
+          -->
+          <form onsubmit="return false;" method="post" action="exercise1.html" enctype="multipart/form-data">
+            <!--
+              <div> is used to group related elements together
+            -->
+            <div class="form-row">
+              <div class="form-label">
+                <!--
+                  to link a label to an input field,
+                  assign the same value to the label's "for" attribute and the input's "id" attribute
+                -->
+                <label for="purpose">Purpose of contact</label>
+              </div>
+              <div class="form-field">
+                <!--
+                  "name" is used as variable or array index at the server side
+                  so, follow the naming convention of variable
+                  e.g., there is no space, no dash, no special letters (underscore is OK)
+                -->
+                <select id="purpose" name="purpose">
+                  <option value="business">Business</option>
+                  <option value="personal">Personal</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-label">
+                <label for="name">Your name</label>
+              </div>
+              <div class="form-field">
+                <input required id="name" type="text" name="name" maxlength="50">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-label">
+                <label for="email">Your email</label>
+              </div>
+              <div class="form-field">
+                <input required id="email" type="email" name="email">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-label">
+                <label for="phone">Your phone</label>
+              </div>
+              <div class="form-field">
+                <input required id="phone" type="tel" name="phone" pattern="[0-9]{9,13}" title="Enter 9 to 13 digits">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-label">
+                <label>Preferred contact method</label>
+              </div>
+              <div class="form-field">
+                <!--
+                  assign the same name but different values to radios that belong to the same group
+                -->
+                <!--
+                  for a list of choices, use list (ordered or unordered)
+                -->
+                <ul>
+                  <li>
+                    <input type="radio" id="contact_email" name="contact_method" value="email">
+                    <label for="contact_email">Email</label>
+                  </li>
+                  <li>
+                    <input type="radio" id="contact_phone" name="contact_method" value="phone">
+                    <label for="contact_phone">Phone</label>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-label">
+                <label>Contact day of week</label>
+              </div>
+              <div class="form-field">
+                <!--
+                  use array notation (i.e., []) to name checkboxes that belong to the same group
+                  the array received at the server include only checked elements
+                -->
+                <ol>
+                  <li>
+                    <input type="checkbox" id="contact_day_mon" name="contact_days[]" value="mon">
+                    <label for="contact_day_mon">Monday</label>
+                  </li>
+                  <li>
+                    <input type="checkbox" id="contact_day_tue" name="contact_days[]" value="tue">
+                    <label for="contact_day_tue">Tuesday</label>
+                  </li>
+                  <li>
+                    <input type="checkbox" id="contact_day_wed" name="contact_days[]" value="wed">
+                    <label for="contact_day_wed">Wednesday</label>
+                  </li>
+                  <li>
+                    <input type="checkbox" id="contact_day_thu" name="contact_days[]" value="thu">
+                    <label for="contact_day_thu">Thursday</label>
+                  </li>
+                  <li>
+                    <input type="checkbox" id="contact_day_fri" name="contact_days[]" value="fri">
+                    <label for="contact_day_fri">Friday</label>
+                  </li>
+                  <li>
+                    <input type="checkbox" id="contact_day_sat" name="contact_days[]" value="sat">
+                    <label for="contact_day_sat">Saturday</label>
+                  </li>
+                  <li>
+                    <input type="checkbox" id="contact_day_sun" name="contact_days[]" value="un">
+                    <label for="contact_day_sun">Sunday</label>
+                  </li>
+                </ol>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-label">
+                <label for="message">Your message</label>
+              </div>
+              <div class="form-field">
+                <textarea cols="40" rows="10" required id="message" name="message"></textarea>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-label">
+                <label for="attachment">Your attachment</label>
+              </div>
+              <div class="form-field">
+                <input type="file" name="attachment" id="attachment">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <input type="reset" value="   Clear   ">
+              <input type="submit" value="   Send   ">
+            </div>
+          </form>
+
+        </section>
+      </article>
+      <article>
+        <h2>
+          An article title
+        </h2>
+        <section class="article-header">
+          <h3>
+            Article header section
+          </h3>
+        </section>
+        <p>
+          Article content
+        </p>
+      </article>
+      <aside>
+        <p>
+          Author info
+        </p>
+      </aside>
+    </main>
+    
+    <footer>
+      Copyright Info
+    </footer>  
+  </body>
+</html>
